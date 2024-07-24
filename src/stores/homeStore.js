@@ -2,12 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
 export const useHomeStore = defineStore("homeStore", () => {
-  const count = ref(0);
-  const name = ref("Eduardo");
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
-  }
+  const meals = ref([0, 1, 2]);
 
-  return { count, name, doubleCount, increment };
+  return { meals };
 });
