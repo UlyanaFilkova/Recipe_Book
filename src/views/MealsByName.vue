@@ -5,7 +5,7 @@
       name=""
       id=""
       v-model="keyword"
-      @change="searchMeal"
+      @change="searchMeals"
       class="rounded border-1 border-gray-600 w-full"
       placeholder="Search for meals"
     />
@@ -16,10 +16,10 @@
   >
     <div
       v-for="meal of meals"
-      :key="meal.IdMeal"
+      :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <RouterLink to="/">
+      <RouterLink :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
         <img
           :src="meal.strMealThumb"
           :alt="meal.strMeal"
@@ -27,7 +27,11 @@
         />
       </RouterLink>
       <div class="p-3">
-        <h3 class="font-bold">{{ meal.strMeal }}</h3>
+        <RouterLink
+          :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
+          class="font-semibold"
+          >{{ meal.strMeal }}</RouterLink
+        >
         <div class="py-2 flex justify-between">
           <a
             :href="meal.strYoutube"
@@ -56,8 +60,8 @@ const keyword = ref("");
 
 const meals = computed(() => store.searchedMeals);
 
-function searchMeal() {
-  store.searchMeal(keyword.value);
+function searchMeals() {
+  store.searchMeals(keyword.value);
   router.push({ name: "byName", params: { name: keyword.value } });
 }
 
@@ -67,7 +71,7 @@ const router = useRouter();
 onMounted(() => {
   keyword.value = route.params.name;
   if (keyword.value) {
-    searchMeal();
+    searchMeals();
   }
 });
 </script>
