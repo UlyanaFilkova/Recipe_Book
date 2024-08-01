@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100">
+  <div class="bg-gray-100 h-full flex flex-col">
     <NavBar />
     <main>
       <RouterView />
@@ -11,4 +11,12 @@
 import { RouterLink, RouterView } from "vue-router";
 import { useHomeStore } from "@/stores/homeStore";
 import NavBar from "./NavBar.vue";
+
 </script>
+
+<style scoped>
+main {
+  flex: 1;
+  overflow-y: auto;
+}
+</style>

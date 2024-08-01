@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 pb-0">
     <input
       type="text"
       name=""
@@ -49,6 +49,7 @@
 <script setup>
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const store = useHomeStore();
 const keyword = ref("");
@@ -57,5 +58,16 @@ const meals = computed(() => store.searchedMeals);
 
 function searchMeal() {
   store.searchMeal(keyword.value);
+  router.push({ name: "byName", params: { name: keyword.value } });
 }
+
+const route = useRoute();
+const router = useRouter();
+
+onMounted(() => {
+  keyword.value = route.params.name;
+  if (keyword.value) {
+    searchMeal();
+  }
+});
 </script>

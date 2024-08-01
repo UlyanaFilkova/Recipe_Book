@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-white shadow-md h-12 flex justify-between items-stretch px-8"
+    class="sticky-header bg-white shadow-md h-12 flex justify-between items-stretch px-8 pr-10"
   >
     <RouterLink :to="{ name: 'home' }" class="inline-flex h-full items-center"
       >Home</RouterLink
@@ -24,3 +24,12 @@
     </nav>
   </header>
 </template>
+
+<style scoped>
+.sticky-header {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+</style>
