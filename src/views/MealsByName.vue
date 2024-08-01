@@ -10,21 +10,52 @@
       placeholder="Search for meals"
     />
   </div>
-  <ul v-if="keyword">
-    <li v-for="meal in meals" :key="meal.id">{{ meal.strMeal }}</li>
-  </ul>
+  <div
+    v-if="keyword"
+    class="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 lg:grid-cols-4"
+  >
+    <div
+      v-for="meal of meals"
+      :key="meal.IdMeal"
+      class="bg-white shadow rounded-xl"
+    >
+      <RouterLink to="/">
+        <img
+          :src="meal.strMealThumb"
+          :alt="meal.strMeal"
+          class="rounded-t-xl w-full h-48 object-cover"
+        />
+      </RouterLink>
+      <div class="p-3">
+        <h3 class="font-bold">{{ meal.strMeal }}</h3>
+        <div class="py-2 flex justify-between">
+          <a
+            :href="meal.strYoutube"
+            target="_blank"
+            class="px-3 py-1 inline-block rounded border border-red-600 bg-red-500 hover:border-red-700 hover:bg-red-700 text-white transition-colors"
+            >YouTube</a
+          >
+          <RouterLink
+            :to="{ name: 'byLetter', params: { letter } }"
+            class="px-3 py-1 inline-block text-shadow rounded border border-amber-500 bg-amber-400 hover:border-amber-500 hover:bg-amber-500 text-white transition-colors"
+            >Save</RouterLink
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed } from "vue";
-import axiosClient from "@/axiosClient.js";
 
 const store = useHomeStore();
 const keyword = ref("");
+
 const meals = computed(() => store.searchedMeals);
+
 function searchMeal() {
   store.searchMeal(keyword.value);
-  console.dir(meals);
 }
 </script>

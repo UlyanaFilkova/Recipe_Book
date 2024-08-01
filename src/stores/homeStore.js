@@ -9,7 +9,6 @@ export const useHomeStore = defineStore("homeStore", () => {
   const searchMeal = async (keyword) => {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
     searchedMeals.value = response.data.meals;
-    console.dir(searchedMeals.value);
   };
 
   return { meals, searchedMeals, searchMeal };
