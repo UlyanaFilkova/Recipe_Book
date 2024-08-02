@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow rounded-xl">
+  <div class="bg-white shadow rounded-xl flex flex-col">
     <RouterLink :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
       <img
         :src="meal.strMealThumb"
@@ -7,7 +7,7 @@
         class="rounded-t-xl w-full h-48 object-cover"
       />
     </RouterLink>
-    <div class="p-3">
+    <div class="p-3 grow flex flex-col justify-between">
       <RouterLink
         :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
         class="font-semibold"
