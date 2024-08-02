@@ -10,7 +10,7 @@
     <div class="p-3 grow flex flex-col justify-between">
       <RouterLink
         :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
-        class="font-semibold"
+        class="font-semibold mb-1"
         >{{ meal.strMeal }}</RouterLink
       >
       <div class="py-2 flex justify-between">
