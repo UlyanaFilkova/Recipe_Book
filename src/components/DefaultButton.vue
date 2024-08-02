@@ -2,7 +2,7 @@
   <a
     :href="href"
     target="_blank"
-    class="px-3 py-2 rounded border-2 border-red-600 bg-red-500 hover:border-red-700 hover:bg-red-700 text-white transition-colors"
+    class="px-3 py-2 text-shadow rounded border-2 border-orange-600 bg-orange-500 hover:border-orange-600 hover:bg-orange-600 text-white transition-colors"
   >
     <slot>YouTube</slot>
   </a>
