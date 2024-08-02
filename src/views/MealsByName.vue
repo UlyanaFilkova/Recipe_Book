@@ -14,39 +14,7 @@
     v-if="keyword"
     class="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 lg:grid-cols-4"
   >
-    <div
-      v-for="meal of meals"
-      :key="meal.idMeal"
-      class="bg-white shadow rounded-xl"
-    >
-      <RouterLink :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
-        <img
-          :src="meal.strMealThumb"
-          :alt="meal.strMeal"
-          class="rounded-t-xl w-full h-48 object-cover"
-        />
-      </RouterLink>
-      <div class="p-3">
-        <RouterLink
-          :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
-          class="font-semibold"
-          >{{ meal.strMeal }}</RouterLink
-        >
-        <div class="py-2 flex justify-between">
-          <a
-            :href="meal.strYoutube"
-            target="_blank"
-            class="px-3 py-1 inline-block rounded border border-red-600 bg-red-500 hover:border-red-700 hover:bg-red-700 text-white transition-colors"
-            >YouTube</a
-          >
-          <RouterLink
-            :to="{ name: 'byLetter', params: { letter } }"
-            class="px-3 py-1 inline-block text-shadow rounded border border-amber-500 bg-amber-400 hover:border-amber-500 hover:bg-amber-500 text-white transition-colors"
-            >Save</RouterLink
-          >
-        </div>
-      </div>
-    </div>
+    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
   </div>
 </template>
 
@@ -54,14 +22,15 @@
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import MealItem from "@/components/MealItem.vue";
 
 const store = useHomeStore();
 const keyword = ref("");
 
-const meals = computed(() => store.searchedMeals);
+const meals = computed(() => store.mealsByName);
 
 function searchMeals() {
-  store.searchMeals(keyword.value);
+  store.searchMealsByName(keyword.value);
   router.push({ name: "byName", params: { name: keyword.value } });
 }
 

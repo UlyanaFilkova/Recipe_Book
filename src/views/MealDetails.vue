@@ -35,12 +35,11 @@
           </template>
         </ul>
       </div>
-      <div class="mt-4">
+      <div class="mt-4 flex gap-5">
         <YouTubeButton :href="meal.strYoutube">Go to YouTube </YouTubeButton>
         <DefaultButton :href="meal.strSource"
           >View Original Source
         </DefaultButton>
-        
       </div>
     </div>
   </div>

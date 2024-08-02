@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 h-full flex flex-col">
+  <div class="h-full flex flex-col">
     <NavBar />
     <main>
       <RouterView />

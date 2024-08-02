@@ -1,19 +1,47 @@
 <template>
-  let
+  <div class="flex flex-col p-8 justify-center items-center">
+    <input
+      type="text"
+      name=""
+      id=""
+      class="rounded border-1 border-gray-600 w-full"
+      placeholder="Search for meals"
+    />
+
+    <div class="flex gap-2 mt-3">
+      <RouterLink
+        :to="{ name: 'byLetter', params: { letter } }"
+        v-for="letter of letters"
+        :key="letter"
+        >{{ letter }}
+      </RouterLink>
+    </div>
+
+    <pre>{{ meals }}</pre>
+  </div>
 </template>
 
 <script setup>
 import { useHomeStore } from "@/stores/homeStore";
-import { toRaw, onMounted, ref } from "vue";
-import axiosClient from "@/axiosClient.js";
+import { toRaw, onMounted, ref, computed, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 const store = useHomeStore();
-const meals = store.meals;
-const ingredients = ref([]);
+const meals = computed(() => store.mealsByLetter);
+const keyword = ref("");
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-onMounted(async () => {
-  const response = await axiosClient.get("/list.php?i=list");
-  ingredients.value = response.data;
+const route = useRoute();
+const router = useRouter();
+
+onMounted(() => {
+  keyword.value = route.params.letter;
+  if (keyword.value) {
+    store.searchMealsByLetter(keyword.value);
+  }
+});
+
+watch(route, () => {
+  store.searchMealsByLetter(route.params.letter);
 });
 </script>
