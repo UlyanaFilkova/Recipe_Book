@@ -1,13 +1,5 @@
 <template>
   <div class="flex flex-col p-8 justify-center items-center">
-    <input
-      type="text"
-      name=""
-      id=""
-      class="rounded border-1 border-gray-600 w-full"
-      placeholder="Search for meals"
-    />
-
     <div
       v-if="keyword"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full"
@@ -24,21 +16,23 @@ import { useRoute, useRouter } from "vue-router";
 import MealItem from "@/components/MealItem.vue";
 
 const store = useHomeStore();
-const meals = computed(() => store.mealsByLetter);
+const meals = computed(() => store.mealsByIngredient);
 const keyword = ref("");
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const route = useRoute();
 const router = useRouter();
 
-onMounted(() => {
-  keyword.value = route.params.letter;
+onMounted(async () => {
+  keyword.value = route.params.ingredient;
   if (keyword.value) {
-    store.searchMealsByLetter(keyword.value);
+    store.searchMealsByIngredient(keyword.value);
   }
 });
 
 watch(route, () => {
-  store.searchMealsByLetter(route.params.letter);
+  keyword.value = route.params.ingredient;
+  if (keyword.value) {
+    store.searchMealsByIngredient(keyword.value);
+  }
 });
 </script>

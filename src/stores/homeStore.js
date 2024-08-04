@@ -7,6 +7,8 @@ export const useHomeStore = defineStore("homeStore", () => {
   const mealsByName = ref([]);
   const mealsByIngredient = ref([]);
   const mealsByLetter = ref([]);
+  const ingredient = ref({});
+  const ingredients = ref([]);
 
   const searchMealsByName = async (keyword) => {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
@@ -19,8 +21,15 @@ export const useHomeStore = defineStore("homeStore", () => {
   };
 
   const searchMealsByLetter = async (keyword) => {
-    const response = await axiosClient.get(`search.php?f=${keyword.toLowerCase()}`);
+    const response = await axiosClient.get(
+      `search.php?f=${keyword.toLowerCase()}`
+    );
     mealsByLetter.value = response.data.meals;
+  };
+
+  const getIngredients = async () => {
+    const response = await axiosClient.get(`list.php?i=list`);
+    ingredients.value = response.data.meals;
   };
 
   return {
@@ -28,8 +37,11 @@ export const useHomeStore = defineStore("homeStore", () => {
     mealsByName,
     mealsByIngredient,
     mealsByLetter,
+    ingredient,
+    ingredients,
     searchMealsByName,
     searchMealsByIngredient,
     searchMealsByLetter,
+    getIngredients,
   };
 });

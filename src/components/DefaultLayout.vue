@@ -11,7 +11,6 @@
 import { RouterLink, RouterView } from "vue-router";
 import { useHomeStore } from "@/stores/homeStore";
 import NavBar from "./NavBar.vue";
-
 </script>
 
 <style scoped>

@@ -21,7 +21,7 @@
           >YouTube</a
         >
         <RouterLink
-          :to="{ name: 'byLetter', params: { letter } }"
+          to=""
           class="px-3 py-1 inline-block text-shadow rounded border border-amber-500 bg-amber-400 hover:border-amber-500 hover:bg-amber-500 text-white transition-colors"
           >Save</RouterLink
         >

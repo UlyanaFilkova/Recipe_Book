@@ -17,7 +17,7 @@
         >Meals by Letter</RouterLink
       >
       <RouterLink
-        :to="{ name: 'byIngredient' }"
+        :to="{ name: 'ingredients' }"
         class="inline-flex px-3 h-full items-center hover:bg-stone-300 transition-colors"
         >Meals by Ingredients</RouterLink
       >

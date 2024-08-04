@@ -27,7 +27,6 @@ import { toRaw, onMounted, ref } from "vue";
 import axiosClient from "@/axiosClient.js";
 
 const store = useHomeStore();
-const meals = store.meals;
 const ingredients = ref([]);
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
