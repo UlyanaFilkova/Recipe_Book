@@ -5,7 +5,7 @@
       name=""
       id=""
       v-model="keyword"
-      @change="searchMeals"
+      @input="searchMeals"
       class="rounded border-1 border-gray-600 w-full"
       placeholder="Search for meals"
     />

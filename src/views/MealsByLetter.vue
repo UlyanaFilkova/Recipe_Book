@@ -48,6 +48,7 @@ onMounted(() => {
 });
 
 watch(route, () => {
+  keyword.value = route.params.letter;
   store.searchMealsByLetter(route.params.letter);
 });
 </script>
