@@ -6,9 +6,11 @@ export const useHomeStore = defineStore("homeStore", () => {
   const meals = ref([]);
   const mealsByName = ref([]);
   const mealsByIngredient = ref([]);
+  const mealsByCategory = ref([]);
   const mealsByLetter = ref([]);
   const ingredient = ref({});
   const ingredients = ref([]);
+  const categories = ref([]);
 
   const searchMealsByName = async (keyword) => {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
@@ -18,6 +20,11 @@ export const useHomeStore = defineStore("homeStore", () => {
   const searchMealsByIngredient = async (keyword) => {
     const response = await axiosClient.get(`filter.php?i=${keyword}`);
     mealsByIngredient.value = response.data.meals;
+  };
+
+  const searchMealsByCategory = async (keyword) => {
+    const response = await axiosClient.get(`filter.php?c=${keyword}`);
+    mealsByCategory.value = response.data.meals;
   };
 
   const searchMealsByLetter = async (keyword) => {
@@ -32,16 +39,26 @@ export const useHomeStore = defineStore("homeStore", () => {
     ingredients.value = response.data.meals;
   };
 
+  const getCategories = async () => {
+    const response = await axiosClient.get(`list.php?c=list`);
+    categories.value = response.data.meals;
+    console.dir(categories.value);
+  };
+
   return {
     meals,
     mealsByName,
     mealsByIngredient,
+    mealsByCategory,
     mealsByLetter,
     ingredient,
     ingredients,
+    categories,
     searchMealsByName,
     searchMealsByIngredient,
+    searchMealsByCategory,
     searchMealsByLetter,
     getIngredients,
+    getCategories,
   };
 });

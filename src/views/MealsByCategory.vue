@@ -1,16 +1,10 @@
 <template>
   <div class="flex flex-col p-8 justify-center items-center">
-    
-
-    <div class="flex gap-2 mb-4">
-      <RouterLink
-        :to="{ name: 'byLetter', params: { letter } }"
-        v-for="letter of letters"
-        :key="letter"
-        >{{ letter }}
-      </RouterLink>
+    <div class="p-8 pb-0">
+      <h1 v-if="keyword" class="text-4xl font-bold mb-4 text-orange-500">
+        {{ keyword }}
+      </h1>
     </div>
-
     <div
       v-if="keyword"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full"
@@ -27,22 +21,23 @@ import { useRoute, useRouter } from "vue-router";
 import MealItem from "@/components/MealItem.vue";
 
 const store = useHomeStore();
-const meals = computed(() => store.mealsByLetter);
+const meals = computed(() => store.mealsByCategory);
 const keyword = ref("");
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const route = useRoute();
 const router = useRouter();
 
-onMounted(() => {
-  keyword.value = route.params.letter;
+onMounted(async () => {
+  keyword.value = route.params.category;
   if (keyword.value) {
-    store.searchMealsByLetter(keyword.value);
+    store.searchMealsByCategory(keyword.value);
   }
 });
 
 watch(route, () => {
-  keyword.value = route.params.letter;
-  store.searchMealsByLetter(route.params.letter);
+  keyword.value = route.params.category;
+  if (keyword.value) {
+    store.searchMealsByCategory(keyword.value);
+  }
 });
 </script>

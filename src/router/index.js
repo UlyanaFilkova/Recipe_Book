@@ -3,9 +3,12 @@ import HomeView from "@/views/HomeView.vue";
 import MealsByName from "@/views/MealsByName.vue";
 import MealsByLetter from "@/views/MealsByLetter.vue";
 import MealsByIngredient from "@/views/MealsByIngredient.vue";
+import MealsByCategory from "@/views/MealsByCategory.vue";
 import DefaultLayout from "@/components/DefaultLayout.vue";
 import MealDetails from "@/views/MealDetails.vue";
 import Ingredients from "@/views/Ingredients.vue";
+import Categories from "@/views/Categories.vue";
+import Areas from "@/views/Areas.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,9 +38,24 @@ const router = createRouter({
           component: Ingredients,
         },
         {
+          path: "/categories",
+          name: "categories",
+          component: Categories,
+        },
+        {
+          path: "/areas",
+          name: "areas",
+          component: Areas,
+        },
+        {
           path: "/ingredient/:ingredient?",
           name: "byIngredient",
           component: MealsByIngredient,
+        },
+        {
+          path: "/category/:category?",
+          name: "byCategory",
+          component: MealsByCategory,
         },
         {
           path: "/meal/:id",
