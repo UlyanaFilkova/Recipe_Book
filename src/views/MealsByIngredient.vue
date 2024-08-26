@@ -1,4 +1,10 @@
 <template>
+  <div v-if="keyword" class="p-8 pb-0">
+    <h1 class="text-4xl font-bold mb-4 text-orange-500 text-center">
+      {{ keyword }}
+    </h1>
+    <div class="">{{ ingredient.strDescription }}</div>
+  </div>
   <div class="flex flex-col p-8 justify-center items-center">
     <div
       v-if="keyword"
@@ -17,6 +23,15 @@ import MealItem from "@/components/MealItem.vue";
 
 const store = useHomeStore();
 const meals = computed(() => store.mealsByIngredient);
+const ingredients = computed(() => store.ingredients);
+
+const ingredient = computed(() => {
+  console.dir(store.ingredients);
+  if (!ingredients.value || !keyword.value) return {};
+  return ingredients.value.filter((i) =>
+    i.strIngredient.toLowerCase().includes(keyword.value.toLowerCase())
+  )[0];
+});
 const keyword = ref("");
 
 const route = useRoute();

@@ -63,6 +63,7 @@ const router = createRouter({
           name: "byArea",
           component: MealsByArea,
         },
+        
         {
           path: "/meal/:id",
           name: "mealDetails",
