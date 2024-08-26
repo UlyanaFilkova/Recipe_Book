@@ -4,6 +4,7 @@ import MealsByName from "@/views/MealsByName.vue";
 import MealsByLetter from "@/views/MealsByLetter.vue";
 import MealsByIngredient from "@/views/MealsByIngredient.vue";
 import MealsByCategory from "@/views/MealsByCategory.vue";
+import MealsByArea from "@/views/MealsByArea.vue";
 import DefaultLayout from "@/components/DefaultLayout.vue";
 import MealDetails from "@/views/MealDetails.vue";
 import Ingredients from "@/views/Ingredients.vue";
@@ -56,6 +57,11 @@ const router = createRouter({
           path: "/category/:category?",
           name: "byCategory",
           component: MealsByCategory,
+        },
+        {
+          path: "/area/:area?",
+          name: "byArea",
+          component: MealsByArea,
         },
         {
           path: "/meal/:id",

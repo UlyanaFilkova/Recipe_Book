@@ -7,10 +7,12 @@ export const useHomeStore = defineStore("homeStore", () => {
   const mealsByName = ref([]);
   const mealsByIngredient = ref([]);
   const mealsByCategory = ref([]);
+  const mealsByArea = ref([]);
   const mealsByLetter = ref([]);
   const ingredient = ref({});
   const ingredients = ref([]);
   const categories = ref([]);
+  const areas = ref([]);
 
   const searchMealsByName = async (keyword) => {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
@@ -25,6 +27,11 @@ export const useHomeStore = defineStore("homeStore", () => {
   const searchMealsByCategory = async (keyword) => {
     const response = await axiosClient.get(`filter.php?c=${keyword}`);
     mealsByCategory.value = response.data.meals;
+  };
+
+  const searchMealsByArea = async (keyword) => {
+    const response = await axiosClient.get(`filter.php?a=${keyword}`);
+    mealsByArea.value = response.data.meals;
   };
 
   const searchMealsByLetter = async (keyword) => {
@@ -42,7 +49,11 @@ export const useHomeStore = defineStore("homeStore", () => {
   const getCategories = async () => {
     const response = await axiosClient.get(`list.php?c=list`);
     categories.value = response.data.meals;
-    console.dir(categories.value);
+  };
+  const getAreas = async () => {
+    const response = await axiosClient.get(`list.php?a=list`);
+    areas.value = response.data.meals;
+    console.dir(areas.value);
   };
 
   return {
@@ -50,15 +61,19 @@ export const useHomeStore = defineStore("homeStore", () => {
     mealsByName,
     mealsByIngredient,
     mealsByCategory,
+    mealsByArea,
     mealsByLetter,
     ingredient,
     ingredients,
     categories,
+    areas,
     searchMealsByName,
     searchMealsByIngredient,
     searchMealsByCategory,
+    searchMealsByArea,
     searchMealsByLetter,
     getIngredients,
     getCategories,
+    getAreas,
   };
 });
