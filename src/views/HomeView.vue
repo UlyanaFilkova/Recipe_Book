@@ -71,7 +71,7 @@ const router = useRouter();
 const keyword = ref("");
 
 function searchMeals() {
-  store.searchMealsByName(keyword.value);
+  // store.searchMealsByName(keyword.value);
   router.push({ name: "byName", params: { name: keyword.value } });
 }
 </script>

@@ -52,6 +52,7 @@
       <button @click.prevent="getRandomMeal()">Random meal</button>
     </nav>
   </header>
+  <LoadingSpinner v-if="loading"> </LoadingSpinner>
 </template>
 
 <style scoped>
@@ -74,7 +75,7 @@ const store = useHomeStore();
 const keyword = ref("");
 
 function searchMeals() {
-  store.searchMealsByName(keyword.value);
+  // store.searchMealsByName(keyword.value);
   router.push({ name: "byName", params: { name: keyword.value } });
 }
 
