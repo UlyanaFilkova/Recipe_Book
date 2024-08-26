@@ -49,6 +49,7 @@
         class="inline-flex px-3 h-full items-center hover:bg-stone-300 transition-colors"
         >Areas</RouterLink
       >
+      <button @click.prevent="getRandomMeal()">Random meal</button>
     </nav>
   </header>
 </template>
@@ -67,6 +68,7 @@ import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import MealItem from "@/components/MealItem.vue";
+import axiosClient from "@/axiosClient.js";
 
 const store = useHomeStore();
 const keyword = ref("");
@@ -85,4 +87,10 @@ onMounted(() => {
     searchMeals();
   }
 });
+
+async function getRandomMeal() {
+  const response = await axiosClient.get(`/random.php`);
+  const mealId = response.data.meals[0].idMeal || 0;
+  router.push({ name: "mealDetails", params: { id: mealId } });
+}
 </script>

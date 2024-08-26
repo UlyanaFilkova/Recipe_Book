@@ -46,7 +46,7 @@
 </template>
 <script setup>
 import { useHomeStore } from "@/stores/homeStore";
-import { toRaw, onMounted, ref, computed } from "vue";
+import { toRaw, onMounted, ref, computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axiosClient from "@/axiosClient.js";
 import YouTubeButton from "@/components/YouTubeButton.vue";
@@ -57,8 +57,17 @@ const meal = ref({});
 const route = useRoute();
 
 onMounted(async () => {
-  const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
-  console.dir(response.data.meals[0]);
-  meal.value = response.data.meals[0] || {};
+  fetchMeal();
 });
+
+watch(route, (newRoute) => {
+  if (newRoute.params.id) {
+    fetchMeal();
+  }
+});
+
+async function fetchMeal() {
+  const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
+  meal.value = response.data.meals[0] || {};
+}
 </script>
