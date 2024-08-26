@@ -30,6 +30,7 @@
         </h3>
       </RouterLink>
     </div>
+    <NothingFound v-if="nothingFound" searchType="Area"> </NothingFound>
   </div>
 </template>
 
@@ -37,12 +38,14 @@
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed, watch } from "vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import NothingFound from "@/components/NothingFound.vue";
 
 const store = useHomeStore();
 
 const keyword = ref("");
 const areas = computed(() => store.areas);
 const loading = ref(true); // Add a loading spinner
+const nothingFound = computed(() => computedAreas.value.length === 0);
 
 const computedAreas = computed(() => {
   if (!computedAreas) return areas;

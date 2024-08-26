@@ -30,6 +30,7 @@
         </h3>
       </RouterLink>
     </div>
+    <NothingFound v-if="nothingFound" searchType="Ingredient"> </NothingFound>
   </div>
 </template>
 
@@ -37,12 +38,14 @@
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed, watch } from "vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import NothingFound from "@/components/NothingFound.vue";
 
 const store = useHomeStore();
 
 const keyword = ref("");
 const ingredients = computed(() => store.ingredients);
 const loading = ref(true); // Add a loading spinner
+const nothingFound = computed(() => computedIngredients.value.length === 0);
 
 const computedIngredients = computed(() => {
   if (!computedIngredients) return ingredients;

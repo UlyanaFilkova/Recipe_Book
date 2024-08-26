@@ -30,6 +30,7 @@
         </h3>
       </RouterLink>
     </div>
+    <NothingFound v-if="nothingFound" searchType="Category"> </NothingFound>
   </div>
 </template>
 
@@ -37,12 +38,14 @@
 import { useHomeStore } from "@/stores/homeStore";
 import { toRaw, onMounted, ref, computed, watch } from "vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import NothingFound from "@/components/NothingFound.vue";
 
 const store = useHomeStore();
 
 const keyword = ref("");
 const categories = computed(() => store.categories);
 const loading = ref(true); // Add a loading spinner
+const nothingFound = computed(() => computedCategories.value.length === 0);
 
 const computedCategories = computed(() => {
   if (!computedCategories) return categories;
