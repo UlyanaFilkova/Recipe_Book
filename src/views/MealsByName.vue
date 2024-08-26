@@ -6,6 +6,7 @@
   >
     <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
   </div>
+  <NothingFound v-if="nothingFound"> </NothingFound>
 </template>
 
 <script setup>
@@ -14,6 +15,7 @@ import { toRaw, onMounted, ref, computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import MealItem from "@/components/MealItem.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import NothingFound from "@/components/NothingFound.vue";
 
 const store = useHomeStore();
 const meals = computed(() => store.mealsByName);
@@ -21,6 +23,7 @@ const keyword = ref("");
 const loading = ref(true); // Add a loading spinner
 const router = useRouter();
 const route = useRoute();
+const nothingFound = computed(() => meals.value == null);
 
 onMounted(async () => {
   keyword.value = route.params.name;
