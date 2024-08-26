@@ -1,5 +1,6 @@
 <template>
-  <div class="max-w-[800px] mx-auto p-8">
+  <LoadingSpinner v-if="loading"> </LoadingSpinner>
+  <div v-else class="max-w-[800px] mx-auto p-8">
     <h1 class="text-4xl font-bold mb-5 text-orange-500">{{ meal.strMeal }}</h1>
     <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]" />
     <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
@@ -51,10 +52,12 @@ import { useRoute, useRouter } from "vue-router";
 import axiosClient from "@/axiosClient.js";
 import YouTubeButton from "@/components/YouTubeButton.vue";
 import DefaultButton from "@/components/DefaultButton.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 
 const store = useHomeStore();
 const meal = ref({});
 const route = useRoute();
+const loading = ref(true); // Add a loading spinner
 
 onMounted(async () => {
   fetchMeal();
@@ -67,7 +70,9 @@ watch(route, (newRoute) => {
 });
 
 async function fetchMeal() {
+  loading.value = true;
   const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
   meal.value = response.data.meals[0] || {};
+  loading.value = false;
 }
 </script>
