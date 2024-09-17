@@ -17,11 +17,13 @@ export const useHomeStore = defineStore("homeStore", () => {
   const searchMealsByName = async (keyword) => {
     const response = await axiosClient.get(`search.php?s=${keyword}`);
     mealsByName.value = response.data.meals;
+    console.dir(mealsByName.value);
   };
 
   const searchMealsByIngredient = async (keyword) => {
     const response = await axiosClient.get(`filter.php?i=${keyword}`);
     mealsByIngredient.value = response.data.meals;
+    console.dir(mealsByIngredient);
   };
 
   const searchMealsByCategory = async (keyword) => {
