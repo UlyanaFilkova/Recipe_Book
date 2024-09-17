@@ -1,14 +1,24 @@
 <template>
   <LoadingSpinner v-if="loading"> </LoadingSpinner>
   <div v-else class="max-w-[800px] mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-5 text-orange-500">{{ meal.strMeal }}</h1>
-    <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]" />
-    <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
-      <div>
-        <strong class="font-bold">Category:</strong> {{ meal.strCategory }}
+    <!-- <h1 class="text-4xl font-bold mb-5 text-orange-500 text-center">
+      {{ meal.strMeal }}
+    </h1> -->
+
+    <div class="flex gap-7">
+      <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[50%]" />
+      <div class="text-lg py-2 flex flex-col gap-4 justify-center">
+        <h1 class="text-4xl font-bold mb-5 text-orange-500">
+          {{ meal.strMeal }}
+        </h1>
+        <div class="flex flex-col gap-4">
+          <div>
+            <strong class="font-bold">Category:</strong> {{ meal.strCategory }}
+          </div>
+          <div><strong class="font-bold">Area:</strong> {{ meal.strArea }}</div>
+          <div><strong class="font-bold">Tags:</strong> {{ meal.strTags }}</div>
+        </div>
       </div>
-      <div><strong class="font-bold">Area:</strong> {{ meal.strArea }}</div>
-      <div><strong class="font-bold">Tags:</strong> {{ meal.strTags }}</div>
     </div>
 
     <div class="my-3">
@@ -36,11 +46,11 @@
           </template>
         </ul>
       </div>
-      <div class="mt-4 flex gap-5">
+      <div class="mt-4 flex gap-5 justify-end">
         <YouTubeButton :href="meal.strYoutube">Go to YouTube </YouTubeButton>
-        <DefaultButton :href="meal.strSource"
+        <!-- <DefaultButton :href="meal.strSource"
           >View Original Source
-        </DefaultButton>
+        </DefaultButton> -->
       </div>
     </div>
   </div>
@@ -57,6 +67,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 const store = useHomeStore();
 const meal = ref({});
 const route = useRoute();
+const router = useRouter();
 const loading = ref(true); // Add a loading spinner
 
 onMounted(async () => {
@@ -75,4 +86,8 @@ async function fetchMeal() {
   meal.value = response.data.meals[0] || {};
   loading.value = false;
 }
+
+router.afterEach((to, from) => {
+  window.scrollTo(0, 0);
+});
 </script>

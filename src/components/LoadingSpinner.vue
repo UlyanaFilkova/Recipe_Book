@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex space-x-2 justify-center items-center bg-white h-screen dark:invert"
+    class="flex space-x-2 justify-center items-center bg-gray-100 h-screen dark:invert"
   >
     <span class="sr-only">Loading...</span>
     <div

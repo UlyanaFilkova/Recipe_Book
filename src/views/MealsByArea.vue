@@ -40,4 +40,5 @@ watch(route, () => {
     store.searchMealsByArea(keyword.value);
   }
 });
+
 </script>

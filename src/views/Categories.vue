@@ -55,8 +55,10 @@ const computedCategories = computed(() => {
 });
 
 onMounted(async () => {
-  loading.value = true;
-  await store.getCategories();
-  loading.value = false;
+  if (!categories.value.length) {
+    loading.value = true;
+    await store.getCategories();
+    loading.value = false;
+  }
 });
 </script>
