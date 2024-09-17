@@ -8,7 +8,7 @@
       name=""
       id=""
       v-model="keyword"
-      class="rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-3 w-full"
+      class="rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-10 w-full"
       placeholder="Search for ingredients"
     />
     <LoadingSpinner v-if="loading"> </LoadingSpinner>

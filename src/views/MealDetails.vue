@@ -24,12 +24,7 @@
         </div>
       </div>
     </div>
-
-    <div class="my-3">
-      {{ meal.strInstructions }}
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 mt-8">
       <div>
         <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
         <ul>
@@ -60,12 +55,16 @@
           </template>
         </ul>
       </div>
-      <div class="mt-4 flex gap-5 justify-end">
-        <YouTubeButton :href="meal.strYoutube">Go to YouTube </YouTubeButton>
-        <!-- <DefaultButton :href="meal.strSource"
+    </div>
+    <div class="my-3 mt-5 text-justify">
+      <h2 class="text-2xl font-semibold mb-2 ">Instructions</h2>
+      {{ meal.strInstructions }}
+    </div>
+    <div class="mt-4 flex gap-5 justify-center">
+      <YouTubeButton :href="meal.strYoutube">Go to YouTube </YouTubeButton>
+      <!-- <DefaultButton :href="meal.strSource"
           >View Original Source
         </DefaultButton> -->
-      </div>
     </div>
   </div>
 </template>
