@@ -26,7 +26,6 @@ const meals = computed(() => store.mealsByIngredient);
 const ingredients = computed(() => store.ingredients);
 
 const ingredient = computed(() => {
-  console.dir(store.ingredients);
   if (!ingredients.value || !keyword.value) return {};
   return ingredients.value.filter((i) =>
     i.strIngredient.toLowerCase().includes(keyword.value.toLowerCase())

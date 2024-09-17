@@ -98,7 +98,7 @@ async function fetchMeal() {
   const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
   meal.value = response.data.meals[0] || {};
   loading.value = false;
-  console.dir(meal.value);
+
 }
 
 router.afterEach((to, from) => {

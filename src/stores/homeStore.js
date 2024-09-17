@@ -44,24 +44,20 @@ export const useHomeStore = defineStore("homeStore", () => {
   const getIngredients = async () => {
     const response = await axiosClient.get(`list.php?i=list`);
     ingredients.value = response.data.meals;
-    console.dir(ingredients.value);
   };
 
   // const getIngredient = async (keyword) => {
   //   const response = await axiosClient.get(`filter.php?i=${keyword}`);
   //   ingredient.value = response.data.meals[0];
-  //   console.dir(ingredient.value);
   // };
 
   const getCategories = async () => {
     const response = await axiosClient.get(`list.php?c=list`);
     categories.value = response.data.meals;
-    console.dir(categories.value);
   };
   const getAreas = async () => {
     const response = await axiosClient.get(`list.php?a=list`);
     areas.value = response.data.meals;
-    console.dir(areas.value);
   };
 
   return {

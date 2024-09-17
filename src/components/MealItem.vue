@@ -18,7 +18,7 @@
           :href="meal.strYoutube"
           target="_blank"
           class="px-3 py-1 inline-block rounded border border-red-600 bg-red-500 hover:border-red-700 hover:bg-red-700 text-white transition-colors"
-          >YouTube</a
+          ><slot>YouTube</slot></a
         >
         <!-- <RouterLink
           to=""
@@ -36,4 +36,5 @@ import { defineProps } from "vue";
 const props = defineProps({
   meal: Object,
 });
+
 </script>
