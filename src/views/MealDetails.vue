@@ -6,7 +6,11 @@
     </h1> -->
 
     <div class="flex gap-7">
-      <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[50%]" />
+      <img
+        :src="meal.strMealThumb"
+        :alt="meal.strMeal"
+        class="max-w-[50%] rounded"
+      />
       <div class="text-lg py-2 flex flex-col gap-4 justify-center">
         <h1 class="text-4xl font-bold mb-5 text-orange-500">
           {{ meal.strMeal }}
@@ -30,7 +34,12 @@
         <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
         <ul>
           <template v-for="(el, ind) of new Array(20)">
-            <li v-if="meal[`strIngredient${ind + 1}`]">
+            <li
+              v-if="
+                meal[`strIngredient${ind + 1}`] &&
+                meal[`strIngredient${ind + 1}`] != ' '
+              "
+            >
               {{ ind + 1 }}. {{ meal[`strIngredient${ind + 1}`] }}
             </li>
           </template>
@@ -40,7 +49,12 @@
         <h2 class="text-2xl font-semibold mb-2">Measures</h2>
         <ul>
           <template v-for="(el, ind) of new Array(20)">
-            <li v-if="meal[`strMeasure${ind + 1}`]">
+            <li
+              v-if="
+                meal[`strMeasure${ind + 1}`] &&
+                meal[`strMeasure${ind + 1}`] != ' '
+              "
+            >
               {{ ind + 1 }}. {{ meal[`strMeasure${ind + 1}`] }}
             </li>
           </template>
@@ -85,6 +99,7 @@ async function fetchMeal() {
   const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
   meal.value = response.data.meals[0] || {};
   loading.value = false;
+  console.dir(meal.value);
 }
 
 router.afterEach((to, from) => {

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-shadow {
+  box-shadow: 5px 5px 10px rgba(100, 100, 100, 0.2);
+}
+
+.custom-shadow:hover {
+  box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.4);
+}

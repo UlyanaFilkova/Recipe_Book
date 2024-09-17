@@ -44,7 +44,7 @@ const store = useHomeStore();
 
 const keyword = ref("");
 const categories = computed(() => store.categories);
-const loading = ref(true); // Add a loading spinner
+const loading = ref(true);
 const nothingFound = computed(() => computedCategories.value.length === 0);
 
 const computedCategories = computed(() => {
@@ -55,10 +55,10 @@ const computedCategories = computed(() => {
 });
 
 onMounted(async () => {
-  if (!categories.value.length) {
-    loading.value = true;
-    await store.getCategories();
-    loading.value = false;
-  }
+  // if (!categories.value.length) {
+  loading.value = true;
+  await store.getCategories();
+  loading.value = false;
+  // }
 });
 </script>

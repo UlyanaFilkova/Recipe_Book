@@ -23,9 +23,11 @@
         }"
         v-for="ingredient of computedIngredients"
         :key="ingredient.idIngredient"
-        class="block bg-white rounded p-3 mb-1 shadow"
+        class="bg-white rounded p-3 custom-shadow flex flex-col justify-center align-center"
       >
-        <h3 class="text-xl font-bold mb-2 text-center">
+        <h3
+          class="text-xl font-bold text-center justify-center flex-1 flex items-center"
+        >
           {{ ingredient.strIngredient }}
         </h3>
       </RouterLink>
@@ -44,7 +46,7 @@ const store = useHomeStore();
 
 const keyword = ref("");
 const ingredients = computed(() => store.ingredients);
-const loading = ref(true); // Add a loading spinner
+const loading = ref(true);
 const nothingFound = computed(() => computedIngredients.value.length === 0);
 
 const computedIngredients = computed(() => {
