@@ -1,6 +1,8 @@
 <template>
   <div class="p-8 pb-0">
-    <h1 class="text-4xl font-bold mb-4 text-orange-500">Categories</h1>
+    <h1 class="text-4xl font-bold my-2 text-orange-500 text-center">
+      Categories
+    </h1>
   </div>
   <div class="flex flex-col p-8 justify-center items-center">
     <input
@@ -8,7 +10,7 @@
       name=""
       id=""
       v-model="keyword"
-      class="rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-10 w-full"
+      class="rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
       placeholder="Search for category"
     />
     <LoadingSpinner v-if="loading"> </LoadingSpinner>
