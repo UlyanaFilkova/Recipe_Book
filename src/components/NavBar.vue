@@ -2,6 +2,7 @@
   <header
     class="sticky-header box-content bg-orange-400 text-lg font-medium text-white shadow-md h-16 flex justify-between items-stretch pl-8 pr-10"
   >
+    
     <RouterLink
       :to="{ name: 'home' }"
       class="inline-flex h-full items-center hover:bg-orange-300 px-2"
