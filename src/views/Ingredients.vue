@@ -1,6 +1,8 @@
 <template>
   <div class="pt-8 pb-0 px-16">
-    <h1 class="text-4xl font-bold my-2 text-orange-500 text-center">Ingredients</h1>
+    <h1 class="text-4xl font-bold my-2 text-orange-500 text-center">
+      Ingredients
+    </h1>
   </div>
   <div class="flex flex-col p-8 justify-center items-center">
     <input
@@ -8,21 +10,26 @@
       name=""
       id=""
       v-model="keyword"
-      class="shadow rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
+      class="max-w-screen-xl shadow rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
       placeholder="Search for ingredients"
     />
     <LoadingSpinner v-if="loading"> </LoadingSpinner>
     <div
       v-else
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full px-16"
+      class="max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full px-16"
     >
       <RouterLink
         :to="{
           name: 'byIngredient',
           params: { ingredient: ingredient.strIngredient },
         }"
-        v-for="ingredient of computedIngredients"
+        v-for="(ingredient, index) of computedIngredients"
         :key="ingredient.idIngredient"
+        :class="[
+          index % 3 === 0 ? 'first-card' : '',
+          index % 3 === 1 ? 'second-card' : '',
+          index % 3 === 2 ? 'third-card' : '',
+        ]"
         class="bg-white rounded p-3 custom-shadow flex flex-col justify-center align-center"
       >
         <h3

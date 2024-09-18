@@ -1,15 +1,15 @@
 <template>
   <header
-    class="sticky-header bg-white shadow-md h-16 flex justify-between items-stretch pl-8 pr-10"
+    class="sticky-header bg-orange-400 text-md font-medium text-white shadow-md h-16 flex justify-between items-stretch pl-8 pr-10"
   >
     <RouterLink :to="{ name: 'home' }" class="inline-flex h-full items-center"
       >Home</RouterLink
     >
-    <nav class="flex items-center gap-1">
+    <nav class="flex items-center gap-1 ">
       <div class="relative flex">
         <input
           type="search"
-          class="relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+          class="bg-white text-gray-700 relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary focus:border-orange-500"
           placeholder="Search"
           aria-label="Search"
           id=""

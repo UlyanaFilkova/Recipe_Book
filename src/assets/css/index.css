@@ -17,3 +17,15 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.first-card {
+  background-color: #fcf0b3;
+}
+
+.second-card {
+  background-color: #ffc2df;
+}
+
+.third-card {
+  background-color: #d3ffc2;
+}

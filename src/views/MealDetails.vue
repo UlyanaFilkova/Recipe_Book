@@ -9,7 +9,7 @@
       <img
         :src="meal.strMealThumb"
         :alt="meal.strMeal"
-        class="max-w-[50%] rounded"
+        class="max-w-[50%] object-cover rounded"
       />
       <div class="text-lg py-2 flex flex-col gap-4 justify-center">
         <h1 class="text-4xl font-bold mb-5 text-orange-500">
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="my-3 mt-5 text-justify">
-      <h2 class="text-2xl font-semibold mb-2 ">Instructions</h2>
+      <h2 class="text-2xl font-semibold mb-2">Instructions</h2>
       {{ meal.strInstructions }}
     </div>
     <div class="mt-4 flex gap-5 justify-center">
@@ -98,7 +98,6 @@ async function fetchMeal() {
   const response = await axiosClient.get(`/lookup.php?i=${route.params.id}`);
   meal.value = response.data.meals[0] || {};
   loading.value = false;
-
 }
 
 router.afterEach((to, from) => {

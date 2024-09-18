@@ -10,21 +10,26 @@
       name=""
       id=""
       v-model="keyword"
-      class="shadow rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
+      class="max-w-screen-xl shadow rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
       placeholder="Search for category"
     />
     <LoadingSpinner v-if="loading"> </LoadingSpinner>
     <div
       v-else
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full px-16"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-screen-xl px-16"
     >
       <RouterLink
         :to="{
           name: 'byCategory',
           params: { category: category.strCategory },
         }"
-        v-for="category of computedCategories"
+        v-for="(category, index) of computedCategories"
         :key="category.idCategory"
+        :class="[
+          index % 3 === 0 ? 'first-card' : '',
+          index % 3 === 1 ? 'second-card' : '',
+          index % 3 === 2 ? 'third-card' : '',
+        ]"
         class="block bg-white rounded p-3 mb-1 shadow"
       >
         <h3 class="text-xl font-bold mb-2 text-center">
