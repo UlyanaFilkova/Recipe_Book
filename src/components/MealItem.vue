@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow rounded-xl flex flex-col">
+  <div class="bg-white shadow rounded-xl flex flex-col custom-shadow">
     <RouterLink :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
       <img
         :src="meal.strMealThumb"
@@ -20,11 +20,7 @@
           class="px-3 py-1 inline-block rounded border border-red-600 bg-red-500 hover:border-red-700 hover:bg-red-700 text-white transition-colors"
           ><slot>YouTube</slot></a
         >
-        <!-- <RouterLink
-          to=""
-          class="px-3 py-1 inline-block text-shadow rounded border border-amber-500 bg-amber-400 hover:border-amber-500 hover:bg-amber-500 text-white transition-colors"
-          >Save</RouterLink
-        > -->
+        
       </div>
     </div>
   </div>

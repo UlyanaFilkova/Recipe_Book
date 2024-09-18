@@ -9,3 +9,11 @@
 .custom-shadow:hover {
   box-shadow: 5px 5px 20px rgba(100, 100, 100, 0.4);
 }
+
+.background-image {
+  background-image: url("../images/pngtree-hot-food-background-material-picture-image_929974.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

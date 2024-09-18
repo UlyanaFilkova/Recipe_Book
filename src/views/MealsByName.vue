@@ -1,12 +1,14 @@
 <template>
-  <LoadingSpinner v-if="loading"> </LoadingSpinner>
-  <div
-    v-else
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full p-8"
-  >
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
+  <div class="">
+    <LoadingSpinner v-if="loading"> </LoadingSpinner>
+    <div
+      v-else
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full p-8"
+    >
+      <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
+    </div>
+    <NothingFound v-if="nothingFound" searchType="Meal"> </NothingFound>
   </div>
-  <NothingFound v-if="nothingFound" searchType="Meal"> </NothingFound>
 </template>
 
 <script setup>

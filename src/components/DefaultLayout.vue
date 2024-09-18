@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     <NavBar />
-    <main>
+    <main class="">
       <RouterView />
     </main>
   </div>
@@ -15,7 +15,7 @@ import NavBar from "./NavBar.vue";
 
 <style scoped>
 main {
-  flex: 1;
+  flex-grow: 1;
   overflow-y: auto;
 }
 </style>

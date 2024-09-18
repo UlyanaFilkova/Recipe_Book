@@ -8,7 +8,7 @@
       name=""
       id=""
       v-model="keyword"
-      class="rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
+      class="shadow rounded border bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 mb-11 w-full text-center"
       placeholder="Search for area"
     />
     <LoadingSpinner v-if="loading"> </LoadingSpinner>
