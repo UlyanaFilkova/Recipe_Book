@@ -2,13 +2,13 @@
   <div
     class="flex flex-col p-8 items-center justify-center h-[calc(100vh-64px)] overflow-y-auto background-image"
   >
-    <h1 class="text-5xl mb-10 ">Welcome to the Recipe Book!</h1>
+    <h1 class="text-5xl mb-10 text-orange-950">Welcome to the Recipe Book!</h1>
     <div class="flex gap-3 flex-wrap justify-center">
       <RouterLink
         :to="{ name: 'byLetter', params: { letter } }"
         v-for="letter of letters"
         :key="letter"
-        class="text-xl text-white font-semibold"
+        class="text-xl text-white font-semibold hover:text-orange-800"
         >{{ letter }}
       </RouterLink>
     </div>
