@@ -2,7 +2,7 @@
   <header
     class="sticky-header bg-orange-400 text-md font-medium text-white shadow-md h-16 flex justify-between items-stretch pl-8 pr-10"
   >
-    <RouterLink :to="{ name: 'home' }" class="inline-flex h-full items-center"
+    <RouterLink :to="{ name: 'home' }" class="inline-flex h-full items-center hover:bg-orange-300 px-2"
       >Home</RouterLink
     >
     <nav class="flex items-center gap-1 ">
@@ -36,17 +36,17 @@
       </div>
       <RouterLink
         :to="{ name: 'ingredients' }"
-        class="inline-flex px-3 h-full items-center hover:bg-stone-300 transition-colors"
+        class="inline-flex px-3 h-full items-center hover:bg-orange-300 transition-colors"
         >Ingredients</RouterLink
       >
       <RouterLink
         :to="{ name: 'categories' }"
-        class="inline-flex px-3 h-full items-center hover:bg-stone-300 transition-colors"
+        class="inline-flex px-3 h-full items-center hover:bg-orange-300 transition-colors"
         >Categories</RouterLink
       >
       <RouterLink
         :to="{ name: 'areas' }"
-        class="inline-flex px-3 h-full items-center hover:bg-stone-300 transition-colors"
+        class="inline-flex px-3 h-full items-center hover:bg-orange-300 transition-colors"
         >Areas</RouterLink
       >
       <button @click.prevent="getRandomMeal()">Random meal</button>

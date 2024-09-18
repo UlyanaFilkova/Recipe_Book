@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flex flex-col p-8 pt-32 items-center h-[calc(100vh-64px)] overflow-y-auto"
+    class="flex flex-col p-8 items-center justify-center h-[calc(100vh-64px)] overflow-y-auto background-image"
   >
-    <h1 class="text-xl mb-10">Welcome to the Recipe Book!</h1>
+    <h1 class="text-5xl mb-10 ">Welcome to the Recipe Book!</h1>
     <div class="flex gap-3 flex-wrap justify-center">
       <RouterLink
         :to="{ name: 'byLetter', params: { letter } }"
         v-for="letter of letters"
         :key="letter"
-        class="text-xl"
+        class="text-xl text-white font-semibold"
         >{{ letter }}
       </RouterLink>
     </div>
@@ -29,7 +29,7 @@
       />
 
       <button
-        class="relative z-[2] -ms-0.5 flex items-center rounded-e bg-primary px-5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong bg-stone-500"
+        class="relative z-[2] -ms-0.5 flex items-center rounded-e bg-primary px-5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong bg-orange-500"
         type="submit"
         id="search-button"
         data-twe-ripple-init
