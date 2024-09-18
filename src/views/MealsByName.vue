@@ -7,7 +7,7 @@
     >
       <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
     </div>
-    <NothingFound v-if="nothingFound" searchType="Meal"> </NothingFound>
+    <NothingFound v-if="nothingFound" searchType="Meals"> </NothingFound>
   </div>
 </template>
 

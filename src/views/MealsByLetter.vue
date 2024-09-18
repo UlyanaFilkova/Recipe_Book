@@ -16,6 +16,7 @@
     >
       <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
     </div>
+    <NothingFound v-if="nothingFound" searchType="Meals" class="mt-10"> </NothingFound>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import { toRaw, onMounted, ref, computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import MealItem from "@/components/MealItem.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import NothingFound from "@/components/NothingFound.vue";
 
 const store = useHomeStore();
 const meals = computed(() => store.mealsByLetter);
@@ -33,6 +35,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const loading = ref(true); // Add a loading spinner
 const route = useRoute();
 const router = useRouter();
+let nothingFound = false;
 
 onMounted(async () => {
   keyword.value = route.params.letter;
@@ -40,6 +43,8 @@ onMounted(async () => {
     loading.value = true; // Set loading to true before making the API call
     await store.searchMealsByLetter(keyword.value);
     loading.value = false; // Set loading to false after the API call is complete
+    console.dir(meals);
+    nothingFound = (meals.value === null);
   }
 });
 
@@ -49,6 +54,7 @@ watch(route, async () => {
     loading.value = true; // Set loading to true before making the API call
     await store.searchMealsByLetter(keyword.value);
     loading.value = false; // Set loading to false after the API call is complete
+    nothingFound = (meals.value === null);
   }
 });
 </script>
